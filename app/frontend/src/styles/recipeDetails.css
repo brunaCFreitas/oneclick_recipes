@@ -1,0 +1,143 @@
+.recipeDetailContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.recipeContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imageDetails {
+  border-radius: 100%;
+  height: 20rem;
+  margin: 1rem;
+  width: 20rem;
+}
+
+.buttonContainerDetails {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.buttonContainerDetailsButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.buttonContainerDetailsButtons button * {
+  filter: invert(1)
+    sepia(1)
+    saturate(20)
+    hue-rotate(290deg)
+    brightness(0.9)
+    contrast(1.5);
+}
+
+.titleDetails {
+  background-color: #ec3232;
+  color: white;
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
+  padding: 2rem;
+  text-align: center;
+  width: 100vw;
+}
+
+.start-button {
+  background-color: #ec3232;
+  border: none;
+  border-radius: 12px;
+  bottom: 0;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  position: fixed;
+  transform: translateX(-50%);
+  transition: 200ms ease-in-out;
+  z-index: 2;
+}
+
+.start-button:hover {
+  background-color: #9b1616;
+  transition: 200ms ease-in-out;
+}
+
+.instructionContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem 0 3rem;
+  width: 60%;
+}
+
+.carousel {
+  margin-bottom: 6rem;
+  margin-top: 2rem;
+}
+
+.recipeContainer ul {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0 3rem;
+  width: 60%;
+}
+
+.recipeContainer ul li {
+  list-style: none;
+}
+
+.ingredientsNinstructions {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 60%;
+}
+
+@media screen and ( max-width : 768px ) {
+
+  .recipeContainer {
+    width: 100%;
+  }
+
+  .imageDetails {
+    height: 15rem;
+    width: 15rem;
+  }
+
+  .buttonContainerDetails {
+    flex-direction: column;
+  }
+
+  .titleDetails {
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+
+  .instructionContainer {
+    width: 100%;
+  }
+
+  .recipeContainer ul {
+    width: 100%;
+  }
+
+  .ingredientsNinstructions {
+    flex-direction: column;
+  }
+}

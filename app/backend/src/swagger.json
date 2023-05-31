@@ -1,0 +1,2032 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API description",
+    "version": "1.0.0",
+    "title": "One Click Recipes API",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3001",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "login",
+      "description": "Everything about login"
+    },
+    {
+      "name": "meals",
+      "description": "Everything about meals"
+    },
+    {
+      "name": "drinks",
+      "description": "Everything about drinks"
+    },
+    {
+      "name": "recipes",
+      "description": "Everything about recipes"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users/login": {
+      "post": {
+        "summary": "Log user into system",
+        "tags": [
+          "login"
+        ],
+        "description": "Essa rota serve para fazer login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoginInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "401": {
+            "description": "Invalid username/password supplied",
+            "schema": {
+              "$ref": "#/definitions/Unauthorized"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/users/register": {
+      "post": {
+        "summary": "Register user",
+        "tags": [
+          "login"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RegisterInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/LoginResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid username/password supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/name": {
+      "get": {
+        "summary": "Get meals by name",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by meal name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealsResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/letter": {
+      "get": {
+        "summary": "Get meals by first letter",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by first letter",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealsResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/random": {
+      "get": {
+        "summary": "Get random meal",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/categories": {
+      "get": {
+        "summary": "Get all categories",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealsCategoryResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/areas": {
+      "get": {
+        "summary": "Get all areas",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealAreaResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/ingredients": {
+      "get": {
+        "summary": "Get all ingredients",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealIngredientResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/ingredient": {
+      "get": {
+        "summary": "Get meals by main ingredient",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by ingredient",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealsResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/category": {
+      "get": {
+        "summary": "Get meals by category",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by category",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealsResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/area": {
+      "get": {
+        "summary": "Get meals by area",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by area",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealByAreaResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/meals/{id}": {
+      "get": {
+        "summary": "Get meal by id",
+        "tags": [
+          "meals"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Meal id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Meal"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/drinks/name": {
+      "get": {
+        "summary": "Get drinks by name",
+        "tags": [
+          "drinks"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by drink name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinksResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/drinks/letter": {
+      "get": {
+        "summary": "Get drinks by first letter",
+        "tags": [
+          "drinks"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by first letter",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinksResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/drinks/random": {
+      "get": {
+        "summary": "Get random drink",
+        "tags": [
+          "drinks"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinksResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/drinks/categories": {
+      "get": {
+        "summary": "Get all categories",
+        "tags": [
+          "drinks"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinksCategoryResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      }
+    },
+    "/drinks/ingredients": {
+      "get": {
+        "summary": "Get all ingredients",
+        "tags": [
+          "drinks"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinkIngredientResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      }
+    },
+    "/drinks/ingredient": {
+      "get": {
+        "summary": "Get drinks by main ingredient",
+        "tags": [
+          "drinks"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by ingredient",
+            "required": true,
+            "type": "string",
+            "x-example": "Applejack"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinksResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/drinks/category": {
+      "get": {
+        "summary": "Get drinks by category",
+        "tags": [
+          "drinks"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search by category",
+            "required": true,
+            "type": "string",
+            "x-example": "Ordinary Drink"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinksResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      }
+    },
+    "/drinks/{id}": {
+      "get": {
+        "summary": "Get drink by id",
+        "tags": [
+          "drinks"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Drink id",
+            "required": true,
+            "type": "string",
+            "x-example": "11007"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinksResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      }
+    },
+    "/recipes/meals/in-progress/{idMeal}": {
+      "get": {
+        "summary": "Get meal by id",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "idMeal",
+            "in": "path",
+            "description": "Meal id",
+            "required": true,
+            "type": "string",
+            "x-example": "52769"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/MealInProgressResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update meal in progress",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "idMeal",
+            "in": "path",
+            "description": "Meal id",
+            "required": true,
+            "type": "string",
+            "x-example": "52769"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MealInProgressInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GenericSuccess"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/recipes/drinks/in-progress/{idDrink}": {
+      "get": {
+        "summary": "Get drink by id",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "idDrink",
+            "in": "path",
+            "description": "Drink id",
+            "required": true,
+            "type": "string",
+            "x-example": "11007"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/DrinkInProgressResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update drink in progress",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "idDrink",
+            "in": "path",
+            "description": "Drink id",
+            "required": true,
+            "type": "string",
+            "x-example": "11007"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DrinkInProgressInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GenericSuccess"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      }
+    },
+    "/recipes/in-progress/{idRecipe}/finish": {
+      "post": {
+        "summary": "Finish recipe",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "idRecipe",
+            "in": "path",
+            "description": "Recipe id",
+            "required": true,
+            "type": "string",
+            "x-example": "11007"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FinishRecipeInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GenericSuccess"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/recipes/done": {
+      "get": {
+        "summary": "Get all recipes done by user",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RecipesDoneResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/recipes/favorites": {
+      "get": {
+        "summary": "Get all recipes favorites by user",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/RecipesDoneResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "/recipes/{idRecipe}": {
+      "post": {
+        "summary": "Add recipe to favorites",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "idRecipe",
+            "in": "path",
+            "description": "Recipe id",
+            "required": true,
+            "type": "string",
+            "x-example": "11007"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/FavoriteRecipeInput"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GenericSuccess"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Remove recipe from favorites",
+        "tags": [
+          "recipes"
+        ],
+        "security": [
+          {
+            "jwtToken": []
+          }
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "idRecipe",
+            "in": "path",
+            "description": "Recipe id",
+            "required": true,
+            "type": "string",
+            "x-example": "11007"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/GenericSuccess"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/InternalServerError"
+            }
+          },
+          "400": {
+            "description": "Invalid payload supplied",
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "jwtToken": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "definitions": {
+    "FavoriteRecipeInput": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "example": "Beef"
+        },
+        "alcoholicOrNot": {
+          "type": "string",
+          "example": "Alcoholic"
+        },
+        "name": {
+          "type": "string",
+          "example": "Beef and Mustard Pie"
+        },
+        "image": {
+          "type": "string",
+          "example": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg"
+        },
+        "nationality": {
+          "type": "string",
+          "example": "British"
+        },
+        "type": {
+          "type": "string",
+          "example": "meal"
+        }
+      }
+    },
+    "RecipesDoneResponse": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/RecipeDone"
+      }
+    },
+    "RecipeDone": {
+      "type": "object",
+      "properties": {
+        "idRecipe": {
+          "type": "string",
+          "example": "52769"
+        },
+        "idUser": {
+          "type": "string",
+          "example": "1"
+        },
+        "type": {
+          "type": "string",
+          "example": "meal"
+        },
+        "category": {
+          "type": "string",
+          "example": "Beef"
+        },
+        "alcoholicOrNot": {
+          "type": "string",
+          "example": "Alcoholic"
+        },
+        "name": {
+          "type": "string",
+          "example": "Beef and Mustard Pie"
+        },
+        "image": {
+          "type": "string",
+          "example": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg"
+        },
+        "doneDate": {
+          "type": "string",
+          "example": "2020-11-25T00:00:00.000Z"
+        },
+        "nationality": {
+          "type": "string",
+          "example": "British"
+        },
+        "tags": {
+          "type": "string",
+          "example": "Meat,Pie"
+        }
+      }
+    },
+    "FinishRecipeInput": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "example": "Beef"
+        },
+        "alcoholicOrNot": {
+          "type": "string",
+          "example": "Alcoholic"
+        },
+        "name": {
+          "type": "string",
+          "example": "Beef and Mustard Pie"
+        },
+        "nationality": {
+          "type": "string",
+          "example": "British"
+        },
+        "tags": {
+          "type": "string",
+          "example": "Meat,Pie"
+        },
+        "type": {
+          "type": "string",
+          "example": "meal"
+        }
+      }
+    },
+    "DrinkInProgressInput": {
+      "type": "object",
+      "properties": {
+        "idField": {
+          "type": "string",
+          "example": "strIngredient1"
+        },
+        "value": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "MealInProgressInput": {
+      "type": "object",
+      "properties": {
+        "idField": {
+          "type": "string",
+          "example": "strIngredient1"
+        },
+        "value": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "MealsResponse": {
+      "type": "object",
+      "properties": {
+        "meals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Meal"
+          }
+        }
+      }
+    },
+    "DrinksResponse": {
+      "type": "object",
+      "properties": {
+        "drinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Drink"
+          }
+        }
+      }
+    },
+    "MealsCategoryResponse": {
+      "type": "object",
+      "properties": {
+        "meals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MealCategory"
+          }
+        }
+      }
+    },
+    "DrinksCategoryResponse": {
+      "type": "object",
+      "properties": {
+        "drinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DrinkCategory"
+          }
+        }
+      }
+    },
+    "MealInProgressResponse": {
+      "type": "object",
+      "properties": {
+        "idUser": {
+          "type": "string",
+          "example": "1"
+        },
+        "idMeal": {
+          "type": "string",
+          "example": "52769"
+        },
+        "strIngredient1": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient2": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient3": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient4": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient5": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient6": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient7": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient8": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient9": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient10": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient11": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient12": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient13": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient14": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient15": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient16": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient17": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient18": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient19": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient20": {
+          "type": "boolean",
+          "example": false
+        },
+        "isFinished": {
+          "type": "boolean",
+          "example": false
+        },
+        "meal": {
+          "$ref": "#/definitions/Meal"
+        }
+      }
+    },
+    "DrinkInProgressResponse": {
+      "type":"object",
+      "properties": {
+        "idUser": {
+          "type": "string",
+          "example": "1"
+        },
+        "idDrink": {
+          "type": "string",
+          "example": "52769"
+        },
+        "strIngredient1": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient2": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient3": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient4": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient5": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient6": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient7": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient8": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient9": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient10": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient11": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient12": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient13": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient14": {
+          "type": "boolean",
+          "example": false
+        },
+        "strIngredient15": {
+          "type": "boolean",
+          "example": false
+        },
+        "isFinished": {
+          "type": "boolean",
+          "example": false
+        },
+        "drink": {
+          "$ref": "#/definitions/Drink"
+        }
+      }
+    },
+    "MealAreaResponse": {
+      "type": "object",
+      "properties": {
+        "meals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MealArea"
+          }
+        }
+      }
+    },
+    "MealIngredientResponse": {
+      "type": "object",
+      "properties": {
+        "meals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MealIngredient"
+          }
+        }
+      }
+    },
+    "DrinkIngredientResponse": {
+      "type": "object",
+      "properties": {
+        "drinks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DrinkIngredient"
+          }
+        }
+      }
+    },
+    "MealByAreaResponse": {
+      "type": "object",
+      "properties": {
+        "meals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MealByArea"
+          }
+        }
+      }
+    },
+    "MealByArea": {
+      "type": "object",
+      "properties": {
+        "strMeal": {
+          "type": "string",
+          "example": "Beef and Mustard Pie"
+        },
+        "strMealThumb": {
+          "type": "string",
+          "example": "https://www.themealdb.com/images/media/meals/sytuqu1511553755.jpg"
+        },
+        "idMeal": {
+          "type": "string",
+          "example": "52874"
+        }
+      }
+    },
+    "MealIngredient": {
+      "type": "object",
+      "properties": {
+        "idIngredient": {
+          "type": "string",
+          "example": "1"
+        },
+        "strIngredient": {
+          "type": "string",
+          "example": "Chicken"
+        },
+        "strDescription": {
+          "type": "string",
+          "example": "Chicken is the most common type of poultry in the world."
+        },
+        "strType": {
+          "type": "string",
+          "example": "Meat"
+        }
+      }
+    },
+    "MealArea": {
+      "type": "object",
+      "properties": {
+        "strArea": {
+          "type": "string",
+          "example": "American"
+        }
+      }
+    },
+    "MealCategory": {
+      "type": "object",
+      "properties": {
+        "idCategory": {
+          "type": "string",
+          "example": "1"
+        },
+        "strCategory": {
+          "type": "string",
+          "example": "Beef"
+        },
+        "strCategoryThumb": {
+          "type": "string",
+          "example": "https://www.themealdb.com/images/category/beef.png"
+        },
+        "strCategoryDescription": {
+          "type": "string",
+          "example": "Beef is the culinary name for meat from cattle, particularly skeletal muscle. Humans have been eating beef since prehistoric times. Beef is a source of high-quality protein and nutrients."
+        }
+      }
+    },
+    "Meal": {
+      "type": "object",
+      "properties": {
+        "idMeal": {
+          "type": "string",
+          "example": "52772"
+        },
+        "strMeal": {
+          "type": "string",
+          "example": "Teriyaki Chicken Casserole"
+        },
+        "strDrinkAlternate": {
+          "type": "string",
+          "example": null
+        },
+        "strCategory": {
+          "type": "string",
+          "example": "Chicken"
+        },
+        "strArea": {
+          "type": "string",
+          "example": "Japanese"
+        },
+        "strInstructions": {
+          "type": "string",
+          "example": "Preheat oven to 350° F. Spray a 9x13-inch baking pan with non-stick spray. Combine soy sauce, ½ cup water, brown sugar, ginger and garlic in a small saucepan and cover. Bring to a boil over medium heat. Remove lid and cook for one minute once boiling. Meanwhile, stir together the corn starch and 2 tablespoons of water in a separate dish until smooth. Once sauce is boiling, add mixture to the saucepan and stir to combine. Cook until the sauce starts to thicken then remove from heat. Place the chicken breasts in the prepared pan. Pour one cup of the sauce over top of chicken. Place chicken in oven and bake 35 minutes or until cooked through. Remove from oven and shred chicken in the dish using two forks. *Meanwhile, steam or cook the vegetables according to package directions. Add the cooked vegetables and rice to the casserole dish with the chicken. Add most of the remaining sauce, reserving a bit to drizzle over the top when serving. Gently toss everything together in the casserole dish until combined. Return to oven and cook 15 minutes. Remove from oven and let stand 5 minutes before serving. Drizzle each serving with remaining sauce. Enjoy!"
+        },
+        "strMealThumb": {
+          "type": "string",
+          "example": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg"
+        },
+        "strTags": {
+          "type": "string",
+          "example": "Meat,Casserole"
+        },
+        "strYoutube": {
+          "type": "string",
+          "example": "https://www.youtube.com/watch?v=4aZr5hZXP_s"
+        },
+        "strIngredient1": {
+          "type": "string",
+          "example": "soy sauce"
+        },
+        "strIngredient2": {
+          "type": "string",
+          "example": "water"
+        },
+        "strIngredient3": {
+          "type": "string",
+          "example": "brown sugar"
+        },
+        "strIngredient4": {
+          "type": "string",
+          "example": "ground ginger"
+        },
+        "strIngredient5": {
+          "type": "string",
+          "example": "minced garlic"
+        },
+        "strIngredient6": {
+          "type": "string",
+          "example": "cornstarch"
+        },
+        "strIngredient7": {
+          "type": "string",
+          "example": "chicken breasts"
+        },
+        "strIngredient8": {
+          "type": "string",
+          "example": "stir-fry vegetables"
+        },
+        "strIngredient9": {
+          "type": "string",
+          "example": "brown rice"
+        },
+        "strIngredient10": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient11": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient12": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient13": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient14": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient15": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient16": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient17": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient18": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient19": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient20": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure1": {
+          "type": "string",
+          "example": "3/4 cup"
+        },
+        "strMeasure2": {
+          "type": "string",
+          "example": "1/2 cup"
+        },
+        "strMeasure3": {
+          "type": "string",
+          "example": "1/4 cup"
+        },
+        "strMeasure4": {
+          "type": "string",
+          "example": "1/2 teaspoon"
+        },
+        "strMeasure5": {
+          "type": "string",
+          "example": "1/2 teaspoon"
+        },
+        "strMeasure6": {
+          "type": "string",
+          "example": "4 Tablespoons"
+        },
+        "strMeasure7": {
+          "type": "string",
+          "example": "4"
+        },
+        "strMeasure8": {
+          "type": "string",
+          "example": "1 (12 oz.)"
+        },
+        "strMeasure9": {
+          "type": "string",
+          "example": "3 cups"
+        },
+        "strMeasure10": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure11": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure12": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure13": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure14": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure15": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure16": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure17": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure18": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure19": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure20": {
+          "type": "string",
+          "example": null
+        },
+        "strSource": {
+          "type": "string",
+          "example": "http://www.number-2-pencil.com/2016/05/02/teriyaki-chicken-casserole/"
+        },
+        "dateModified": {
+          "type": "string",
+          "example": null
+        }
+      }
+    },
+    "Drink": {
+      "type": "object",
+      "properties": {
+        "idDrink": {
+          "type": "string",
+          "example": "11007"
+        },
+        "strDrink": {
+          "type": "string",
+          "example": "Margarita"
+        },
+        "strCategory": {
+          "type": "string",
+          "example": "Ordinary Drink"
+        },
+        "strAlcoholic": {
+          "type": "string",
+          "example": "Alcoholic"
+        },
+        "strGlass": {
+          "type": "string",
+          "example": "Cocktail glass"
+        },
+        "strInstructions": {
+          "type": "string",
+          "example": "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten.."
+        },
+        "strDrinkThumb": {
+          "type": "string",
+          "example": "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg"
+        },
+        "strIngredient1": {
+          "type": "string",
+          "example": "Tequila"
+        },
+        "strIngredient2": {
+          "type": "string",
+          "example": "Triple sec"
+        },
+        "strIngredient3": {
+          "type": "string",
+          "example": "Lime juice"
+        },
+        "strIngredient4": {
+          "type": "string",
+          "example": "Salt"
+        },
+        "strIngredient5": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient6": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient7": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient8": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient9": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient10": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient11": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient12": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient13": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient14": {
+          "type": "string",
+          "example": null
+        },
+        "strIngredient15": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure1": {
+          "type": "string",
+          "example": "1 1/2 oz "
+        },
+        "strMeasure2": {
+          "type": "string",
+          "example": "1/2 oz "
+        },
+        "strMeasure3": {
+          "type": "string",
+          "example": "1 oz "
+        },
+        "strMeasure4": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure5": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure6": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure7": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure8": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure9": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure10": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure11": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure12": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure13": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure14": {
+          "type": "string",
+          "example": null
+        },
+        "strMeasure15": {
+          "type": "string",
+          "example": null
+        },
+        "dateModified": {
+          "type": "string",
+          "example": "2015-08-18 14:42:59"
+        }
+      }
+    },
+    "DrinkCategory": {
+      "type": "object",
+      "properties": {
+        "idCategory": {
+          "type": "string",
+          "example": "1"
+        },
+        "strCategory": {
+          "type": "string",
+          "example": "Ordinary Drink"
+        }
+      }
+    },
+    "DrinkIngredient": {
+      "type": "object",
+      "properties": {
+        "idIngredient": {
+          "type": "string",
+          "example": "1"
+        },
+        "strIngredient": {
+          "type": "string",
+          "example": "Light rum"
+        }
+      }
+    },
+    "LoginInput": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "admin@admin.com"
+        },  
+        "password": {
+          "type": "string",
+          "example": "Abc123@"
+        }
+      }
+    },
+    "RegisterInput": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "admin@admin.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "Abc123@"
+        },
+        "username": {
+          "type": "string",
+          "example": "admin"
+        }
+      }
+    },
+    "LoginResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+        },
+        "email": {
+          "type": "string",
+          "example": "admin@admin.com"
+        }
+      }
+    },
+    "Unauthorized": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Invalid email or password"
+        }
+      }
+    },
+    "InternalServerError": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Internal server error"
+        }
+      }
+    },
+    "BadRequest": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Bad request"
+        }
+      }
+    },
+    "GenericSuccess": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Ok"
+        }
+      }
+    }
+  }
+}

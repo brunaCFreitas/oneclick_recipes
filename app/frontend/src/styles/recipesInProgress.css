@@ -1,0 +1,103 @@
+.ingredientsNinstructionsRIP {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  margin: 1rem 0;
+  width: 60%;
+}
+
+.ingredientsNinstructionsRIP h5 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.ingredientsNinstructionsRIP ul {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ingredientsNinstructionsRIP ul li {
+  background-color: rgb(207, 207, 207);
+  border-radius: 20px;
+  font-weight: 600;
+  list-style: none;
+  padding-left: 2rem;
+  text-transform: capitalize;
+  width: 30ch;
+}
+
+.ingredientsNinstructionsRIP ul li:nth-child( odd ) {
+  background-color: white;
+  color: black;
+}
+
+.titleRIP {
+  background-color: #ec3232;
+  color: white;
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  text-align: center;
+  width: 100vw;
+}
+
+.RIPContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ingredientsNinstructionsRIP input {
+  cursor: pointer;
+  margin: 0 10px 10px 0;
+}
+
+.RIPContainer button {
+  background-color: #ec3232;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem;
+  padding: 10px 20px;
+  transition: 200ms ease-in-out;
+}
+
+.RIPContainer button:hover {
+  background-color: #9b1616;
+  transition: 200ms ease-in-out;
+}
+
+.RIPContainer button:disabled {
+  background-color: #494949;
+  cursor: not-allowed;
+  transition: 200ms ease-in-out;
+}
+
+.RIPContainer button img {
+  filter: invert(1);
+  transform: translateY(-0.1rem);
+}
+
+.imageRIP {
+  border-radius: 100%;
+  height: 20rem;
+  margin: 1rem;
+  width: 20rem;
+}
+
+@media screen and ( max-width : 768px ) {
+
+  .ingredientsNinstructionsRIP {
+    flex-direction: column;
+  }
+}

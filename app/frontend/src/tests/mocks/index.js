@@ -1,0 +1,16 @@
+export * as emptyDrinkResponse from './emptyDrinksResponse.json';
+export * as emptyFoodResponse from './emptyFoodResponse.json';
+export * as foodResponse from './foodResponse.json';
+export * as drinksResponse from './drinksResponse.json';
+export * as foodCategoriesResponse from './foodCategoriesResponse.json';
+export * as drinksCategoriesResponse from './drinksCategoriesResponse.json';
+export * as foodBeefCategoryResponse from './foodBeefCategoryResponse.json';
+export * as drinkOrdinaryCategoryResponse from './drinkOrdinaryCategoryResponse.json';
+export * as foodByIngredientChickenResponse from './foodByIngredientChickenResponse.json';
+export * as drinksByIngredientLemonResponse from './drinksByIngredientLemonResponse.json';
+export * as drinkByNameGGResponse from './drinkByNameGGResponse.json';
+export * as foodByNameBeefResponse from './foodByNameBeefResponse.json';
+export * as drinkByFirstLetterAResponse from './drinkByFirstLetterAResponse.json';
+export * as foodByFirstLetterBResponse from './foodByFirstLetterBResponse.json';
+export * as foodByIDResponse from './foodByIDResponse.json';
+export * as drinksyIDResponse from './drinksByIDResponse.json';

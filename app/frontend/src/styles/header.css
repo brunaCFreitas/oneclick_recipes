@@ -1,0 +1,40 @@
+.headerTitle {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.headerContainer {
+  align-items: center;
+  background-color: #ec3232;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  padding-top: 1.5rem;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 80%;
+}
+
+.buttonHeader {
+  background-color: white;
+  border-radius: 12px;
+  padding: 5px;
+  transition: 200ms ease-in-out;
+  margin-right: 1rem;
+}
+
+.buttonHeader:hover {
+  background-color: #9b1616;
+  transition: 200ms ease-in-out;
+}
+
+.buttonHeader:hover img {
+  filter: invert(1);
+  transition: 200ms ease-in-out;
+}

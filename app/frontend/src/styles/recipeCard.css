@@ -1,0 +1,57 @@
+.cardContainer a {
+  color: #2e2e2e;
+  text-decoration: none;
+}
+
+.cardContainer:hover a {
+  color: #cc2c2c;
+  text-decoration: none;
+}
+
+.cardContainer {
+  transition: 200ms ease-in-out;
+}
+
+.cardContainer h3::-webkit-scrollbar {
+  display: none;
+}
+
+.cardContainer:hover {
+  transform: scale(1.08);
+  transition: 200ms ease-in-out;
+}
+
+.cardContainer h3 {
+  max-height: 4ch;
+  overflow: scroll;
+  text-align: center;
+  width: 20ch;
+}
+
+.cardElement {
+  align-items: center;
+  background-color: white;
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: space-around;
+  margin: 0.5rem;
+  padding: 1.1rem;
+  transition: 200ms ease-in-out;
+}
+
+.cardImg {
+  border-radius: 100%;
+  height: 10rem;
+  width: 10rem;
+}
+
+.divCard {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 0.5rem;
+  padding: 1.1rem;
+}

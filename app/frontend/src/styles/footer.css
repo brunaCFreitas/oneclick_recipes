@@ -1,0 +1,21 @@
+footer {
+  align-items: center;
+  background-color: #ec3232;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 50px;
+  position: fixed;
+  width: 100%;
+}
+
+footer a img {
+  filter: invert(1);
+}
+
+footer h4 {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}

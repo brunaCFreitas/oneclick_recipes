@@ -1,0 +1,49 @@
+.profileContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 85vh;
+  justify-content: center;
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.buttonsContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1.5rem auto;
+  max-width: 600px;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.buttonsContainer button {
+  background-color: #ec3232;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 10px 10px 0;
+  padding: 10px 20px;
+  transition: 200ms ease-in-out;
+}
+
+.buttonsContainer button:hover {
+  background-color: #9b1616;
+  transition: 200ms ease-in-out;
+}
+
+.profileContainer span {
+  color: #ec3232;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5rem;
+}
