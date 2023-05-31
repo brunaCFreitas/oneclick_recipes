@@ -1,6 +1,7 @@
 import * as express from 'express';
 import * as swaggerUi from 'swagger-ui-express';
 import 'express-async-errors';
+import * as cors from 'cors';
 import mealsRouter from './routes/meals.routes';
 import drinksRouter from './routes/drinks.routes';
 import recipesRouter from './routes/recipes.routes';
@@ -22,6 +23,7 @@ class App {
     this.app.use('/drinks', drinksRouter);
     this.app.use('/recipes', recipesRouter);
     this.app.use('/users', userRouter);
+    this.app.use(cors());
 
     this.app.use(errorHandler);
   }
